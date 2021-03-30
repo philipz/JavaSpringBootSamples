@@ -32,7 +32,7 @@ public class RedissonConfig {
     //而连接空闲时间超过了该数值，这些连接将会自动被关闭，并从连接池里去掉
     private int idleConnectionTimeout;
     //ping节点超时,单位：毫秒,默认1000
-    private int pingTimeout;
+    private int pingConnectionInterval;
     //连接等待超时,单位：毫秒,默认10000
     private int connectTimeout;
     //命令等待超时,单位：毫秒,默认3000；等待节点回复命令的时间。该时间从命令发送成功时开始计时
@@ -75,20 +75,17 @@ public class RedissonConfig {
                 .setConnectionMinimumIdleSize(connectionMinimumIdleSize)
                 .setConnectionPoolSize(connectionPoolSize)
                 .setDatabase(database)
-                .setDnsMonitoring(dnsMonitoring)
                 .setDnsMonitoringInterval(dnsMonitoringInterval)
                 .setSubscriptionConnectionMinimumIdleSize(subscriptionConnectionMinimumIdleSize)
                 .setSubscriptionConnectionPoolSize(subscriptionConnectionPoolSize)
                 .setSubscriptionsPerConnection(subscriptionsPerConnection)
                 .setClientName(clientName)
-                .setFailedAttempts(failedAttempts)
                 .setRetryAttempts(retryAttempts)
                 .setRetryInterval(retryInterval)
-                .setReconnectionTimeout(reconnectionTimeout)
                 .setTimeout(timeout)
                 .setConnectTimeout(connectTimeout)
                 .setIdleConnectionTimeout(idleConnectionTimeout)
-                .setPingTimeout(pingTimeout)
+                .setPingConnectionInterval(pingConnectionInterval)
                 .setPassword(password);
 
         return Redisson.create(config);
